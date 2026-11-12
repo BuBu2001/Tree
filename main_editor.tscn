@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://chxf8y4ts8e37"]
+
+[ext_resource type="Texture2D" uid="uid://c3830msqrmnrh" path="res://Без им1ени.png" id="1_up0xs"]
+
+[node name="MainEditor" type="Control" unique_id=1322280249]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="БезИм1Ени" type="Sprite2D" parent="." unique_id=825762393]
+position = Vector2(955, 544.5)
+scale = Vector2(1, 0.8975)
+texture = ExtResource("1_up0xs")

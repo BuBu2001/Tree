@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://2vfiu3i0hpc2"]
+
+[ext_resource type="Script" uid="uid://jbktjlip411" path="res://node_2d.gd" id="1_0hol4"]
+[ext_resource type="Texture2D" uid="uid://c7r73l3bw5qxu" path="res://cement-texture.jpg" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://btkwmsy3fec8j" path="res://Без им11ени.png" id="3_0hol4"]
+[ext_resource type="PackedScene" uid="uid://dfmeew55q1l4q" path="res://och.tscn" id="4_0hol4"]
+
+[node name="Node2D" type="Node2D" unique_id=1040233332]
+script = ExtResource("1_0hol4")
+
+[node name="CementTexture" type="Sprite2D" parent="." unique_id=861323260]
+position = Vector2(967.99994, 542.25)
+scale = Vector2(0.41337386, 0.31173918)
+texture = ExtResource("1_wtcfe")
+
+[node name="БезИмени" type="Sprite2D" parent="CementTexture" unique_id=1989487062]
+position = Vector2(-6.9351807, -20.04882)
+scale = Vector2(2.4061823, 2.9084144)
+texture = ExtResource("3_0hol4")
+
+[node name="Label" type="Label" parent="." unique_id=720348991]
+offset_left = 800.0
+offset_top = 448.0
+offset_right = 1161.0
+offset_bottom = 544.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Добро пожаловать!
+         Нажмите на продолжить"
+
+[node name="Button" type="Button" parent="." unique_id=1270829347]
+offset_left = 792.0
+offset_top = 528.0
+offset_right = 1240.0
+offset_bottom = 600.0
+theme_override_font_sizes/font_size = 31
+text = "Продолжить"
+
+[node name="och" type="Node2D" parent="." unique_id=936033579]
+
+[node name="och" parent="och" unique_id=1464593911 instance=ExtResource("4_0hol4")]
+position = Vector2(2000, 0)

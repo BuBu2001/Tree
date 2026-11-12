@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dfmeew55q1l4q"]
+
+[ext_resource type="Texture2D" uid="uid://c3830msqrmnrh" path="res://Без им1ени.png" id="1_0vyrd"]
+[ext_resource type="Script" uid="uid://c7udvg74yprol" path="res://och.gd" id="1_bn3rf"]
+[ext_resource type="Script" uid="uid://cc3lbpmt1f5e7" path="res://file_panel.gd" id="2_bn3rf"]
+[ext_resource type="Texture2D" uid="uid://hufcgmum47j0" path="res://черный.png" id="4_twux0"]
+[ext_resource type="Texture2D" uid="uid://c7pa7u4tk7jkq" path="res://addons/at-icons/animation/book.svg" id="5_4ll6i"]
+[ext_resource type="Texture2D" uid="uid://blewm6x7f5hql" path="res://addons/at-icons/animation/bookmark.svg" id="6_82yxx"]
+
+[sub_resource type="SystemFont" id="SystemFont_drjgg"]
+
+[sub_resource type="SystemFont" id="SystemFont_bn3rf"]
+
+[node name="och" type="Node2D" unique_id=1464593911]
+script = ExtResource("1_bn3rf")
+
+[node name="БезИм1Ени" type="Sprite2D" parent="." unique_id=354711278]
+position = Vector2(960, 547)
+scale = Vector2(1, 0.9)
+texture = ExtResource("1_0vyrd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1639585559]
+propagate_maximum_size = false
+offset_left = 521.0
+offset_right = 1882.0
+offset_bottom = 1074.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="FilePanel" type="Control" parent="." unique_id=1760348659]
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 1074.0
+script = ExtResource("2_bn3rf")
+
+[node name="PanelContainer" type="PanelContainer" parent="FilePanel" unique_id=374558263]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_right = 521.0
+offset_bottom = 1080.0
+
+[node name="Tree" type="Tree" parent="FilePanel/PanelContainer" unique_id=1144865681]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_drjgg")
+theme_override_fonts/title_button_font = SubResource("SystemFont_bn3rf")
+theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/title_button_font_size = 22
+
+[node name="ContextMenu" type="PopupMenu" parent="FilePanel" unique_id=1285455929]
+oversampling_override = 1.0
+
+[node name="CreateDialog" type="ConfirmationDialog" parent="FilePanel" unique_id=591005090]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+
+[node name="NameInput" type="LineEdit" parent="FilePanel/CreateDialog" unique_id=703986151]
+offset_right = 68.5
+offset_bottom = 31.0
+
+[node name="Editor" type="CodeEdit" parent="." unique_id=493418907]
+offset_left = 530.0
+offset_top = 30.0
+offset_right = 1883.0
+offset_bottom = 1080.0
+
+[node name="Черный" type="Sprite2D" parent="." unique_id=684833294]
+position = Vector2(1225, 15)
+scale = Vector2(13.899999, 0.3)
+texture = ExtResource("4_twux0")
+
+[node name="FilePathLabel" type="Label" parent="." unique_id=1413066258]
+offset_left = 532.0
+offset_top = 5.0
+offset_right = 1911.0
+offset_bottom = 28.0
+uppercase = true
+
+[node name="Черный2" type="Sprite2D" parent="." unique_id=2111302532]
+position = Vector2(525.5, 540)
+scale = Vector2(0.09000001, 10.8)
+texture = ExtResource("4_twux0")
+
+[node name="Book" type="Sprite2D" parent="." unique_id=1897639478]
+position = Vector2(1904.0001, 44)
+scale = Vector2(1.6875, 1.6875)
+texture = ExtResource("5_4ll6i")
+
+[node name="Bookmark" type="Sprite2D" parent="." unique_id=1120968248]
+position = Vector2(1904.0001, 70)
+scale = Vector2(1.4375, 1.625)
+texture = ExtResource("6_82yxx")
