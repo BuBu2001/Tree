@@ -14,7 +14,7 @@ scale = Vector2(0.41337386, 0.31173918)
 texture = ExtResource("1_wtcfe")
 
 [node name="БезИмени" type="Sprite2D" parent="CementTexture" unique_id=1989487062]
-position = Vector2(-6.9351807, -20.04882)
+position = Vector2(-31.448385, 8.821468)
 scale = Vector2(2.4061823, 2.9084144)
 texture = ExtResource("3_0hol4")
 

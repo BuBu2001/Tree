@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bvaq2xojdkqdg"]
+
+[ext_resource type="Texture2D" uid="uid://c3830msqrmnrh" path="res://Без им1ени.png" id="1_y1sxl"]
+[ext_resource type="Texture2D" uid="uid://hufcgmum47j0" path="res://черный.png" id="2_xga56"]
+
+[node name="onif1" type="Node2D" unique_id=1236410763]
+
+[node name="БезИм1Ени" type="Sprite2D" parent="." unique_id=1520900593]
+position = Vector2(963, 540)
+scale = Vector2(0.9973958, 0.89916664)
+texture = ExtResource("1_y1sxl")
+
+[node name="Черный" type="Sprite2D" parent="БезИм1Ени" unique_id=1351212517]
+position = Vector2(934.43353, 0.023658752)
+scale = Vector2(0.41999996, 12.01065)
+texture = ExtResource("2_xga56")
+
+[node name="Черный" type="Sprite2D" parent="." unique_id=883153878]
+position = Vector2(28, 540)
+scale = Vector2(0.41999996, 10.8)
+texture = ExtResource("2_xga56")

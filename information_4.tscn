@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b2v8ljf5jtgi0"]
+
+[ext_resource type="Texture2D" uid="uid://c3830msqrmnrh" path="res://Без им1ени.png" id="1_fu5bx"]
+[ext_resource type="Script" uid="uid://bdunmgyggn7vy" path="res://control.gd" id="2_wh10y"]
+
+[node name="information4" type="Node2D" unique_id=408301737]
+
+[node name="БезИм1Ени" type="Sprite2D" parent="." unique_id=332442373]
+position = Vector2(959.50006, 541.50006)
+scale = Vector2(0.9994791, 0.89916664)
+texture = ExtResource("1_fu5bx")
+
+[node name="Control" type="Control" parent="БезИм1Ени" unique_id=1170776095]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -962.00116
+offset_top = -596.6637
+offset_right = 957.9991
+offset_bottom = 601.11206
+script = ExtResource("2_wh10y")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="БезИм1Ени/Control" unique_id=1168368016]
+layout_mode = 0
+offset_right = 1922.0012
+offset_bottom = 1060.9824
+
+[node name="ChartContainer" type="HBoxContainer" parent="БезИм1Ени/Control/ScrollContainer" unique_id=1931394668]
+layout_mode = 2
+theme_override_constants/separation = 20

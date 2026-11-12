@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c16n31wquiree"]
+
+[ext_resource type="Texture2D" uid="uid://c3830msqrmnrh" path="res://Без им1ени.png" id="1_33a1c"]
+
+[node name="bookmarks2" type="Node2D" unique_id=1156461880]
+
+[node name="БезИм1Ени" type="Sprite2D" parent="." unique_id=1357414091]
+position = Vector2(959.50006, 541.50006)
+scale = Vector2(0.9994791, 0.89916664)
+texture = ExtResource("1_33a1c")

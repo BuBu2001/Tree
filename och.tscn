@@ -5,16 +5,29 @@
 [ext_resource type="Script" uid="uid://cc3lbpmt1f5e7" path="res://file_panel.gd" id="2_bn3rf"]
 [ext_resource type="Texture2D" uid="uid://hufcgmum47j0" path="res://черный.png" id="4_twux0"]
 [ext_resource type="Texture2D" uid="uid://c7pa7u4tk7jkq" path="res://addons/at-icons/animation/is/book.svg" id="5_4ll6i"]
-[ext_resource type="Texture2D" uid="uid://cqkkctw2ch8xg" path="res://addons/at-icons/animation/bar_graph.svg" id="5_cushp"]
 [ext_resource type="Texture2D" uid="uid://blewm6x7f5hql" path="res://addons/at-icons/animation/is/bookmark.svg" id="6_82yxx"]
 [ext_resource type="Texture2D" uid="uid://di2fk12n7h7yo" path="res://addons/at-icons/animation/planet.svg" id="8_xh6qq"]
 [ext_resource type="Texture2D" uid="uid://d1gca0r3dgqbo" path="res://addons/at-icons/animation/gears.svg" id="9_webrk"]
+[ext_resource type="Texture2D" uid="uid://drwx01t0ptndj" path="res://addons/at-icons/animation/apple.svg" id="9_xh6qq"]
+[ext_resource type="PackedScene" uid="uid://bvaq2xojdkqdg" path="res://onif_1.tscn" id="10_kwog8"]
+[ext_resource type="PackedScene" uid="uid://c16n31wquiree" path="res://bookmarks_2.tscn" id="11_i6jph"]
+[ext_resource type="PackedScene" uid="uid://dhjoisuv8udbs" path="res://knowledge_3.tscn" id="12_5fo3x"]
+[ext_resource type="PackedScene" uid="uid://b2v8ljf5jtgi0" path="res://information_4.tscn" id="13_cc44y"]
+[ext_resource type="PackedScene" uid="uid://dsj240yuts3nm" path="res://graph_5.tscn" id="14_gfj5o"]
 
 [sub_resource type="SystemFont" id="SystemFont_drjgg"]
 subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_bn3rf"]
 subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_xh6qq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_webrk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xh6qq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxnxj"]
 
 [node name="och" type="Node2D" unique_id=1464593911]
 script = ExtResource("1_bn3rf")
@@ -36,14 +49,16 @@ size_flags_stretch_ratio = 0.0
 layout_mode = 3
 anchors_preset = 0
 offset_right = 517.0
-offset_bottom = 1074.0
+offset_bottom = 1089.0
 script = ExtResource("2_bn3rf")
 
 [node name="PanelContainer" type="PanelContainer" parent="FilePanel" unique_id=374558263]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
+offset_left = 77.0
+offset_top = 294.0
 offset_right = 521.0
-offset_bottom = 1080.0
+offset_bottom = 1017.0
 
 [node name="Tree" type="Tree" parent="FilePanel/PanelContainer" unique_id=1144865681]
 layout_mode = 2
@@ -63,11 +78,22 @@ position = Vector2i(0, 36)
 offset_right = 68.5
 offset_bottom = 31.0
 
+[node name="Черный2" type="Sprite2D" parent="FilePanel" unique_id=1122854743]
+position = Vector2(526, 545)
+scale = Vector2(0.09000001, 10.9)
+texture = ExtResource("4_twux0")
+
 [node name="Editor" type="CodeEdit" parent="." unique_id=493418907]
 offset_left = 530.0
 offset_top = 30.0
 offset_right = 1883.0
-offset_bottom = 1080.0
+offset_bottom = 1090.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_xh6qq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_webrk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xh6qq")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_bxnxj")
+minimap_draw = true
 
 [node name="Черный" type="Sprite2D" parent="." unique_id=684833294]
 position = Vector2(1225, 15)
@@ -82,31 +108,26 @@ offset_bottom = 30.0
 uppercase = true
 
 [node name="Черный2" type="Sprite2D" parent="." unique_id=2111302532]
-position = Vector2(525.5, 540)
-scale = Vector2(0.09000001, 10.8)
+position = Vector2(39, 545.50006)
+scale = Vector2(0.78, 10.910001)
 texture = ExtResource("4_twux0")
 
-[node name="Book" type="Sprite2D" parent="." unique_id=1897639478]
+[node name="3" type="Sprite2D" parent="." unique_id=1897639478]
 position = Vector2(1901.5, 111.5)
 scale = Vector2(1.6875, 1.6875)
 texture = ExtResource("5_4ll6i")
 
-[node name="Bookmark" type="Sprite2D" parent="." unique_id=1120968248]
+[node name="2" type="Sprite2D" parent="." unique_id=1120968248]
 position = Vector2(1901, 80)
 scale = Vector2(1.5937505, 1.6875002)
 texture = ExtResource("6_82yxx")
 
-[node name="BarGraph" type="Sprite2D" parent="." unique_id=272720071]
-position = Vector2(1901, 143)
-scale = Vector2(1.75, 1.5625)
-texture = ExtResource("5_cushp")
-
-[node name="Planet" type="Sprite2D" parent="." unique_id=1682440181]
+[node name="5" type="Sprite2D" parent="." unique_id=1682440181]
 position = Vector2(1901.25, 173)
 scale = Vector2(1.7812481, 1.8125002)
 texture = ExtResource("8_xh6qq")
 
-[node name="Gears" type="Sprite2D" parent="." unique_id=1886661689]
+[node name="1" type="Sprite2D" parent="." unique_id=1886661689]
 position = Vector2(1902.0001, 47)
 scale = Vector2(1.812505, 1.8125)
 texture = ExtResource("9_webrk")
@@ -145,3 +166,37 @@ texture = ExtResource("4_twux0")
 position = Vector2(48.986816, -1766.6743)
 scale = Vector2(0.020270288, 36.333492)
 texture = ExtResource("4_twux0")
+
+[node name="4" type="Sprite2D" parent="." unique_id=2029590345]
+position = Vector2(1900.9999, 143)
+scale = Vector2(1.8125, 1.4375)
+texture = ExtResource("9_xh6qq")
+
+[node name="Черный4" type="Sprite2D" parent="." unique_id=254923337]
+position = Vector2(299, 148)
+scale = Vector2(4.45, 2.94)
+texture = ExtResource("4_twux0")
+
+[node name="Черный4" type="Sprite2D" parent="Черный4" unique_id=1983236771]
+position = Vector2(0.27388, 307.75342)
+scale = Vector2(1.001264, 0.2503063)
+texture = ExtResource("4_twux0")
+
+[node name="Pages" type="TabContainer" parent="." unique_id=308627754]
+offset_right = 8.0
+offset_bottom = 40.0
+
+[node name="onif1" parent="." unique_id=1236410763 instance=ExtResource("10_kwog8")]
+position = Vector2(2773, -3)
+
+[node name="bookmarks2" parent="." unique_id=1156461880 instance=ExtResource("11_i6jph")]
+position = Vector2(2781, 1296)
+
+[node name="knowledge3" parent="." unique_id=1492425632 instance=ExtResource("12_5fo3x")]
+position = Vector2(12, 1279)
+
+[node name="information4" parent="." unique_id=408301737 instance=ExtResource("13_cc44y")]
+position = Vector2(2792, 2662)
+
+[node name="graph5" parent="." unique_id=240402516 instance=ExtResource("14_gfj5o")]
+position = Vector2(0, 2613)

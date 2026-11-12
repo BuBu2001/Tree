@@ -14,6 +14,7 @@ config/name="Teee"
 run/main_scene="uid://2vfiu3i0hpc2"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+config/size/mode=0
 
 [autoload]
 
