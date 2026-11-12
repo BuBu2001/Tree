@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://c7udvg74yprol" path="res://och.gd" id="1_bn3rf"]
 [ext_resource type="Script" uid="uid://cc3lbpmt1f5e7" path="res://file_panel.gd" id="2_bn3rf"]
 [ext_resource type="Texture2D" uid="uid://hufcgmum47j0" path="res://черный.png" id="4_twux0"]
-[ext_resource type="Texture2D" uid="uid://c7pa7u4tk7jkq" path="res://addons/at-icons/animation/is/book.svg" id="5_4ll6i"]
-[ext_resource type="Texture2D" uid="uid://blewm6x7f5hql" path="res://addons/at-icons/animation/is/bookmark.svg" id="6_82yxx"]
+[ext_resource type="Texture2D" uid="uid://c7pa7u4tk7jkq" path="res://addons/at-icons/animation/book.svg" id="5_4ll6i"]
+[ext_resource type="Texture2D" uid="uid://blewm6x7f5hql" path="res://addons/at-icons/animation/bookmark.svg" id="6_82yxx"]
 [ext_resource type="Texture2D" uid="uid://di2fk12n7h7yo" path="res://addons/at-icons/animation/planet.svg" id="8_xh6qq"]
 [ext_resource type="Texture2D" uid="uid://d1gca0r3dgqbo" path="res://addons/at-icons/animation/gears.svg" id="9_webrk"]
 [ext_resource type="Texture2D" uid="uid://drwx01t0ptndj" path="res://addons/at-icons/animation/apple.svg" id="9_xh6qq"]
@@ -14,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dhjoisuv8udbs" path="res://knowledge_3.tscn" id="12_5fo3x"]
 [ext_resource type="PackedScene" uid="uid://b2v8ljf5jtgi0" path="res://information_4.tscn" id="13_cc44y"]
 [ext_resource type="PackedScene" uid="uid://dsj240yuts3nm" path="res://graph_5.tscn" id="14_gfj5o"]
-[ext_resource type="FontFile" path="res://fonts/OctinVintageBRg Bold.ttf" id="15_i6jph"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwog8"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_drjgg"]
 subpixel_positioning = 0
@@ -56,10 +58,10 @@ script = ExtResource("2_bn3rf")
 [node name="PanelContainer" type="PanelContainer" parent="FilePanel" unique_id=374558263]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
-offset_left = 77.0
 offset_top = 294.0
-offset_right = 521.0
-offset_bottom = 1017.0
+offset_right = 523.0
+offset_bottom = 1019.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kwog8")
 
 [node name="Tree" type="Tree" parent="FilePanel/PanelContainer" unique_id=1144865681]
 layout_mode = 2
@@ -80,8 +82,8 @@ offset_right = 68.5
 offset_bottom = 31.0
 
 [node name="Черный2" type="Sprite2D" parent="FilePanel" unique_id=1122854743]
-position = Vector2(526, 545)
-scale = Vector2(0.09000001, 10.9)
+position = Vector2(526, 543)
+scale = Vector2(0.09000001, 10.94)
 texture = ExtResource("4_twux0")
 
 [node name="Editor" type="CodeEdit" parent="." unique_id=493418907]
@@ -109,8 +111,8 @@ offset_bottom = 30.0
 uppercase = true
 
 [node name="Черный2" type="Sprite2D" parent="." unique_id=2111302532]
-position = Vector2(39, 545)
-scale = Vector2(0.78, 10.9)
+position = Vector2(39, 1054.5)
+scale = Vector2(0.78, 0.71000004)
 texture = ExtResource("4_twux0")
 
 [node name="3" type="Sprite2D" parent="." unique_id=1897639478]
@@ -174,13 +176,13 @@ scale = Vector2(1.8125, 1.4375)
 texture = ExtResource("9_xh6qq")
 
 [node name="Черный4" type="Sprite2D" parent="." unique_id=254923337]
-position = Vector2(299, 147.5)
-scale = Vector2(4.45, 2.9499998)
+position = Vector2(260.75, 147.5)
+scale = Vector2(5.2149997, 2.9499998)
 texture = ExtResource("4_twux0")
 
 [node name="Черный4" type="Sprite2D" parent="Черный4" unique_id=1983236771]
-position = Vector2(0.27388, 307.82312)
-scale = Vector2(1.001264, 0.25170052)
+position = Vector2(0.27388, 307.36484)
+scale = Vector2(1.001264, 0.24253489)
 texture = ExtResource("4_twux0")
 
 [node name="Pages" type="TabContainer" parent="." unique_id=308627754]
@@ -199,14 +201,12 @@ position = Vector2(12, 1279)
 [node name="information4" parent="." unique_id=408301737 instance=ExtResource("13_cc44y")]
 position = Vector2(2799, 2595)
 
-[node name="graph5" parent="." unique_id=240402516 instance=ExtResource("14_gfj5o")]
-position = Vector2(0, 2613)
-
 [node name="Label" type="Label" parent="." unique_id=698747710]
-offset_left = 1.0
-offset_top = -4.0
-offset_right = 530.0
-offset_bottom = 289.0
-theme_override_fonts/font = ExtResource("15_i6jph")
+offset_top = 4.0
+offset_right = 529.0
+offset_bottom = 297.0
 theme_override_font_sizes/font_size = 120
 text = "Tree"
+
+[node name="graph5" parent="." unique_id=1169312182 instance=ExtResource("14_gfj5o")]
+position = Vector2(0, -1263)

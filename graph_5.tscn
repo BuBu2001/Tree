@@ -1,10 +1,18 @@
 [gd_scene format=3 uid="uid://dsj240yuts3nm"]
 
 [ext_resource type="Texture2D" uid="uid://c3830msqrmnrh" path="res://Без им1ени.png" id="1_pkm3u"]
+[ext_resource type="Script" uid="uid://cnd67m5esk3ui" path="res://contssrol.gd" id="2_xwm36"]
 
-[node name="graph5" type="Node2D" unique_id=240402516]
+[node name="graph5" type="Node2D" unique_id=1169312182]
 
-[node name="БезИм1Ени" type="Sprite2D" parent="." unique_id=742662750]
-position = Vector2(959.50006, 541.50006)
-scale = Vector2(0.9994791, 0.89916664)
+[node name="БезИм1Ени" type="Sprite2D" parent="." unique_id=646218796]
+position = Vector2(959.50006, 540)
+scale = Vector2(0.9994792, 0.9)
 texture = ExtResource("1_pkm3u")
+
+[node name="Control" type="Control" parent="." unique_id=1848837548]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1919.0
+offset_bottom = 1080.0
+script = ExtResource("2_xwm36")
