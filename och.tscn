@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dhjoisuv8udbs" path="res://knowledge_3.tscn" id="12_5fo3x"]
 [ext_resource type="PackedScene" uid="uid://b2v8ljf5jtgi0" path="res://information_4.tscn" id="13_cc44y"]
 [ext_resource type="PackedScene" uid="uid://dsj240yuts3nm" path="res://graph_5.tscn" id="14_gfj5o"]
+[ext_resource type="FontFile" path="res://fonts/OctinVintageBRg Bold.ttf" id="15_i6jph"]
 
 [sub_resource type="SystemFont" id="SystemFont_drjgg"]
 subpixel_positioning = 0
@@ -108,8 +109,8 @@ offset_bottom = 30.0
 uppercase = true
 
 [node name="Черный2" type="Sprite2D" parent="." unique_id=2111302532]
-position = Vector2(39, 545.50006)
-scale = Vector2(0.78, 10.910001)
+position = Vector2(39, 545)
+scale = Vector2(0.78, 10.9)
 texture = ExtResource("4_twux0")
 
 [node name="3" type="Sprite2D" parent="." unique_id=1897639478]
@@ -173,13 +174,13 @@ scale = Vector2(1.8125, 1.4375)
 texture = ExtResource("9_xh6qq")
 
 [node name="Черный4" type="Sprite2D" parent="." unique_id=254923337]
-position = Vector2(299, 148)
-scale = Vector2(4.45, 2.94)
+position = Vector2(299, 147.5)
+scale = Vector2(4.45, 2.9499998)
 texture = ExtResource("4_twux0")
 
 [node name="Черный4" type="Sprite2D" parent="Черный4" unique_id=1983236771]
-position = Vector2(0.27388, 307.75342)
-scale = Vector2(1.001264, 0.2503063)
+position = Vector2(0.27388, 307.82312)
+scale = Vector2(1.001264, 0.25170052)
 texture = ExtResource("4_twux0")
 
 [node name="Pages" type="TabContainer" parent="." unique_id=308627754]
@@ -190,13 +191,22 @@ offset_bottom = 40.0
 position = Vector2(2773, -3)
 
 [node name="bookmarks2" parent="." unique_id=1156461880 instance=ExtResource("11_i6jph")]
-position = Vector2(2781, 1296)
+position = Vector2(2812, 1333)
 
 [node name="knowledge3" parent="." unique_id=1492425632 instance=ExtResource("12_5fo3x")]
 position = Vector2(12, 1279)
 
 [node name="information4" parent="." unique_id=408301737 instance=ExtResource("13_cc44y")]
-position = Vector2(2792, 2662)
+position = Vector2(2799, 2595)
 
 [node name="graph5" parent="." unique_id=240402516 instance=ExtResource("14_gfj5o")]
 position = Vector2(0, 2613)
+
+[node name="Label" type="Label" parent="." unique_id=698747710]
+offset_left = 1.0
+offset_top = -4.0
+offset_right = 530.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("15_i6jph")
+theme_override_font_sizes/font_size = 120
+text = "Tree"

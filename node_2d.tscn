@@ -39,4 +39,4 @@ text = "Продолжить"
 [node name="och" type="Node2D" parent="." unique_id=936033579]
 
 [node name="och" parent="och" unique_id=1464593911 instance=ExtResource("4_0hol4")]
-position = Vector2(2000, 0)
+position = Vector2(2421, 49)

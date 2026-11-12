@@ -21,8 +21,10 @@ script = ExtResource("2_wh10y")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="БезИм1Ени/Control" unique_id=1168368016]
 layout_mode = 0
-offset_right = 1922.0012
-offset_bottom = 1060.9824
+offset_left = 238.12402
+offset_top = 385.91296
+offset_right = 1749.9116
+offset_bottom = 974.2355
 
 [node name="ChartContainer" type="HBoxContainer" parent="БезИм1Ени/Control/ScrollContainer" unique_id=1931394668]
 layout_mode = 2

@@ -20,23 +20,112 @@ const ICON_SCENES: Array[String] = [
 	"res://graph_5.tscn"
 ]
 
+const CONFIG_PATH: String = "user://settings.cfg"
+
 var current_file_path: String = ""
 var is_modified: bool = false
 var active_subscene: Node = null
+var auto_save_enabled: bool = true
 
 func _ready() -> void:
-	path_label.add_theme_color_override("font_color", Color.WHITE)
-	path_label.add_theme_font_size_override("font_size", 16)
+	# Визуальный апгрейд лейбла пути: делаем его чище и современнее
+	path_label.add_theme_color_override("font_color", Color("#5f6368"))
+	path_label.add_theme_font_size_override("font_size", 15)
 	
 	file_panel.file_selected.connect(_open_file)
 	editor.text_changed.connect(_on_text_changed)
 	
-	editor.gutters_draw_line_numbers = true
-	editor.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	editor.editable = false
 	path_label.text = "Файл не выбран"
+	
+	# Применяем сохранённые настройки при старте программы
+	apply_settings()
 
-# --- ОБРАБОТКА ГОРЯЧИХ КЛАВИШ (РАБОТАЕТ ДАЖЕ ПРИ АКТИВНОМ ВВОДЕ В EDITOR) ---
+# --- ПРИМЕНЕНИЕ НАСТРОЕК ИЗ ФАЙЛА (ВИЗУАЛЬНЫЙ АПГРЕЙД РЕДАКТОРА) ---
+
+func apply_settings() -> void:
+	var config := ConfigFile.new()
+	config.load(CONFIG_PATH)
+	
+	# 1. Размер шрифта
+	var f_size: int = config.get_value("editor", "font_size", 16)
+	editor.add_theme_font_size_override("font_size", f_size)
+	
+	# 2. Нумерация строк и перенос длинных строк
+	editor.gutters_draw_line_numbers = config.get_value("editor", "line_numbers", true)
+	var wrap: bool = config.get_value("editor", "word_wrap", true)
+	editor.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY if wrap else TextEdit.LINE_WRAPPING_NONE
+	
+	# 3. Автосохранение
+	auto_save_enabled = config.get_value("app", "auto_save", true)
+	
+	# 4. Цветовая тема редактора (ПОЛНАЯ ПЕРЕРАБОТКА СТИЛЕЙ)
+	var theme_idx: int = config.get_value("editor", "theme", 0)
+	var bg_style := StyleBoxFlat.new()
+	bg_style.set_content_margin_all(8)
+	bg_style.set_corner_radius_all(4) # Легкие скругления для эстетики
+	
+	match theme_idx:
+		0: # Светлая (Чистый лист, стиль Google Docs)
+			bg_style.bg_color = Color.WHITE
+			bg_style.border_color = Color("#dadce0")
+			bg_style.set_border_width_all(1)
+			
+			editor.add_theme_color_override("font_color", Color("#202124"))
+			editor.add_theme_color_override("font_readonly_color", Color("#5f6368"))
+			editor.add_theme_color_override("caret_color", Color("#1a73e8")) # Синий курсор
+			editor.add_theme_color_override("current_line_color", Color("#f8f9fa")) # Подсветка строки
+			editor.add_theme_color_override("selection_color", Color("#d2e3fc")) # Голубое выделение
+			editor.add_theme_color_override("font_selected_color", Color("#202124"))
+			editor.add_theme_color_override("number_color", Color("#5f6368"))
+			editor.add_theme_color_override("number_background_color", Color.WHITE)
+			
+		1: # Тёмная (Ночная тема, как в нормальных IDE)
+			bg_style.bg_color = Color("#1e1e1e")
+			bg_style.border_color = Color("#333333")
+			bg_style.set_border_width_all(1)
+			
+			editor.add_theme_color_override("font_color", Color("#d4d4d4"))
+			editor.add_theme_color_override("font_readonly_color", Color("#858585"))
+			editor.add_theme_color_override("caret_color", Color("#aeafad"))
+			editor.add_theme_color_override("current_line_color", Color("#2a2d2e"))
+			editor.add_theme_color_override("selection_color", Color("#264f78"))
+			editor.add_theme_color_override("font_selected_color", Color.WHITE)
+			editor.add_theme_color_override("number_color", Color("#858585"))
+			editor.add_theme_color_override("number_background_color", Color("#1e1e1e")) # <-- ИСПРАВЛЕНО
+			
+		2: # Сепия (Тёплая бумага, для писателей)
+			bg_style.bg_color = Color("#f4ecd8")
+			bg_style.border_color = Color("#e0d8c0")
+			bg_style.set_border_width_all(1)
+			
+			editor.add_theme_color_override("font_color", Color("#3b2f2f"))
+			editor.add_theme_color_override("font_readonly_color", Color("#7a6a58"))
+			editor.add_theme_color_override("caret_color", Color("#8b4513"))
+			editor.add_theme_color_override("current_line_color", Color("#ebe3d0"))
+			editor.add_theme_color_override("selection_color", Color("#d6c6a9"))
+			editor.add_theme_color_override("font_selected_color", Color("#3b2f2f"))
+			editor.add_theme_color_override("number_color", Color("#7a6a58"))
+			editor.add_theme_color_override("number_background_color", Color("#f4ecd8")) # <-- ИСПРАВЛЕНО
+			
+	editor.add_theme_stylebox_override("normal", bg_style)
+	editor.add_theme_stylebox_override("read_only", bg_style)
+	editor.add_theme_stylebox_override("focus", bg_style)
+	
+	# 5. Применение выбранного шрифта
+	var font_path: String = config.get_value("editor", "font_path", "")
+	if font_path.is_empty():
+		editor.remove_theme_font_override("font")
+	elif font_path.begins_with("res://"):
+		var loaded_font = load(font_path)
+		if loaded_font:
+			editor.add_theme_font_override("font", loaded_font)
+	else:
+		var external_font := FontFile.new()
+		if external_font.load_dynamic_font(font_path) == OK:
+			editor.add_theme_font_override("font", external_font)
+
+# --- ОБРАБОТКА ГОРЯЧИХ КЛАВИШ ---
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -59,6 +148,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				var icon = icons[i]
 				if icon and icon.visible and icon.texture != null:
 					if icon.get_rect().has_point(icon.to_local(event.position)):
+						# Автосохранение перед переходом на другую вкладку
+						if auto_save_enabled and is_modified:
+							_save_current_file()
 						_open_tab_scene(ICON_SCENES[i])
 						get_viewport().set_input_as_handled()
 						return
@@ -84,7 +176,14 @@ func return_to_editor() -> void:
 	if active_subscene != null:
 		active_subscene.queue_free()
 		active_subscene = null
+	# Обновляем настройки на случай выхода через Esc
+	apply_settings()
 	_set_editor_visible(true)
+
+# Открывает выбранный документ из вкладки Knowledge и возвращает в главный редактор
+func open_document_from_subscene(file_path: String) -> void:
+	return_to_editor()
+	_open_file(file_path)
 
 func _set_editor_visible(is_vis: bool) -> void:
 	for child in get_children():
@@ -94,6 +193,10 @@ func _set_editor_visible(is_vis: bool) -> void:
 # --- РАБОТА С ДОКУМЕНТАМИ ---
 
 func _open_file(path: String) -> void:
+	# Автосохранение текущего документа перед открытием нового
+	if auto_save_enabled and is_modified:
+		_save_current_file()
+		
 	var file = FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		path_label.text = "Ошибка чтения: " + path.get_file()
